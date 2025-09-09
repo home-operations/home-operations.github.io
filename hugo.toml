@@ -1,7 +1,7 @@
-baseURL = 'https://home-operations.com/'
-languageCode = 'en'
+baseURL = "https://home-operations.com/"
+languageCode = "en"
 defaultContentLanguage = "en"
-title = 'Home Operations'
+title = "Home Operations"
 theme = "lynx"
 copyright = "Home Operations ©2025"
 
@@ -10,7 +10,7 @@ disableKinds = ["taxonomy", "term"]
 
 [params.author]
   name = "Home Operations"
-  headline = "Blah blah we're a community of people who like to run production at home blah blah"
+  headline = "we're a community of people who love to break production at home"
   image = "img/logo.gif"
 
   links = [
