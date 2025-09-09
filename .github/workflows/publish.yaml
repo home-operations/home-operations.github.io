@@ -20,6 +20,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      # renovate: datasource=github-releases depName=gohugoio/hugo
+      HUGO_VERSION: v0.150.0
     steps:
       - name: Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
@@ -30,26 +33,18 @@ jobs:
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
         id: pages
 
-      - run: |-
-          mkdir -p ./cache && chmod 777 ./cache
-          mkdir -p ./public && chmod 777 ./public
-          mkdir -p ./resources && chmod 777 ./resources
+      - name: Install Hugo
+        run: |-
+          wget -O hugo.deb https://github.com/gohugoio/hugo/releases/download/${HUGO_VERSION}/hugo_extended_${HUGO_VERSION#v}_linux-amd64.deb
+          sudo dpkg -i hugo.deb
 
       - name: Build with Hugo
-        uses: docker://ghcr.io/gohugoio/hugo:v0.150.0
         env:
-          HUGO_CACHEDIR: /github/workspace/cache
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
           HUGO_ENVIRONMENT: production
           HUGO_BASE_URL: ${{ steps.pages.outputs.base_url }}
-        with:
-          args: >-
-            --baseURL "${HUGO_BASE_URL}/"
-            --destination /github/workspace/public
-            --gc
-            --minify
-            --noBuildLock
-            --noChmod
-            --noTimes
+        run: |-
+          hugo --gc --minify --baseURL "${HUGO_BASE_URL}/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
