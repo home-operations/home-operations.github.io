@@ -24,22 +24,22 @@ jobs:
       TZ: Europe/Oslo
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
         with:
           submodules: recursive
           fetch-depth: 0
       - name: Setup Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5 # v5
         with:
           go-version: ${{ env.GO_VERSION }}
           cache: false
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: ${{ env.NODE_VERSION }}
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
       - name: Create directory for user-specific executable files
         run: |
           mkdir -p "${HOME}/.local"
@@ -63,7 +63,7 @@ jobs:
           git config core.quotepath false
       - name: Cache restore
         id: cache-restore
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@0400d5f644dc74513175e3cd8d07132dd4860809 # v4
         with:
           path: ${{ runner.temp }}/hugo_cache
           key: hugo-${{ github.run_id }}
@@ -78,12 +78,12 @@ jobs:
             --cacheDir "${{ runner.temp }}/hugo_cache"
       - name: Cache save
         id: cache-save
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@0400d5f644dc74513175e3cd8d07132dd4860809 # v4
         with:
           path: ${{ runner.temp }}/hugo_cache
           key: ${{ steps.cache-restore.outputs.cache-primary-key }}
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
         with:
           path: ./public
   deploy:
@@ -95,4 +95,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
