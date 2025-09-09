@@ -33,7 +33,7 @@ jobs:
       - name: Build with Hugo
         uses: docker://ghcr.io/gohugoio/hugo:v0.150.0
         env:
-          HUGO_CACHEDIR: /project/hugo_cache
+          HUGO_CACHEDIR: "."
           HUGO_ENVIRONMENT: production
           HUGO_BASE_URL: ${{ steps.pages.outputs.base_url }}
         with:
