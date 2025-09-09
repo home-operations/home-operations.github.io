@@ -74,4 +74,4 @@ disableKinds = ["taxonomy", "term"]
 # Github Pages Deployment Requirement
 [caches]
   [caches.images]
-    dir = ':cacheDir/images'
+    dir = ":cacheDir/images"
