@@ -33,6 +33,7 @@ jobs:
       - name: Build with Hugo
         uses: docker://ghcr.io/gohugoio/hugo:v0.150.0
         env:
+          HUGO_CACHEDIR: ./hugo_cache
           HUGO_ENVIRONMENT: production
           HUGO_BASE_URL: ${{ steps.pages.outputs.base_url }}
         with:
@@ -40,7 +41,6 @@ jobs:
             --gc
             --minify
             --baseURL "${HUGO_BASE_URL}/"
-          options: --user root
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
