@@ -30,12 +30,14 @@ jobs:
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
         id: pages
 
-      - run: mkdir -p ./public && chmod 777 ./public
+      - run: |-
+          mkdir -p ./cache && chmod 777 ./cache
+          mkdir -p ./public && chmod 777 ./public
 
       - name: Build with Hugo
         uses: docker://ghcr.io/gohugoio/hugo:v0.150.0
         env:
-          HUGO_CACHEDIR: /github/workspace
+          HUGO_CACHEDIR: /github/workspace/cache
           HUGO_ENVIRONMENT: production
           HUGO_BASE_URL: ${{ steps.pages.outputs.base_url }}
         with:
@@ -45,6 +47,8 @@ jobs:
             --gc
             --minify
             --noBuildLock
+            --noChmod
+            --noTimes
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
