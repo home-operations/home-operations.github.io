@@ -30,6 +30,8 @@ jobs:
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
         id: pages
 
+      - run: mkdir -p /github/workspace/public
+
       - name: Build with Hugo
         uses: docker://ghcr.io/gohugoio/hugo:v0.150.0
         env:
