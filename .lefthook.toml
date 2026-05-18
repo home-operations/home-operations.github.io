@@ -3,5 +3,5 @@ parallel = true
 
 [pre-commit.commands.format-yaml]
 run = "yamlfmt {staged_files}"
-glob = ["*.yaml"]
+glob = ["*.yml", "*.yaml"]
 stage_fixed = true
