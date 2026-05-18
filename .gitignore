@@ -1,2 +1,4 @@
-public
+.claude
 .hugo_build.lock
+.private
+public
