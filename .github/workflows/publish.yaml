@@ -1,5 +1,6 @@
 ---
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
 name: Publish
 
 on:
@@ -33,7 +34,7 @@ jobs:
         id: pages
 
       - name: Install Hugo
-        run: |-
+        run: |
           wget -O hugo.deb https://github.com/gohugoio/hugo/releases/download/${HUGO_VERSION}/hugo_extended_${HUGO_VERSION#v}_linux-amd64.deb
           sudo dpkg -i hugo.deb
 
@@ -42,7 +43,7 @@ jobs:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
           HUGO_ENVIRONMENT: production
           HUGO_BASE_URL: ${{ steps.pages.outputs.base_url }}
-        run: |-
+        run: |
           hugo --gc --minify --baseURL "${HUGO_BASE_URL}/"
 
       - name: Upload artifact
