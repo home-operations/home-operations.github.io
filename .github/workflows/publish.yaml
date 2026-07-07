@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-24.04
     env:
       # renovate: datasource=github-releases depName=gohugoio/hugo
-      HUGO_VERSION: v0.150.0
+      HUGO_VERSION: v0.164.0
     steps:
       - name: Checkout
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
