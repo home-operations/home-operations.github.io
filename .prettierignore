@@ -1,1 +1,3 @@
 *.toml
+# Go templates: the theme partial overrides are not HTML oxfmt can reformat
+layouts/
