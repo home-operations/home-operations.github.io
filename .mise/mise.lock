@@ -49,10 +49,10 @@ url_api = "https://api.github.com/repos/evilmartians/lefthook/releases/assets/56
 provenance = "github-attestations"
 
 [[tools.oxfmt]]
-version = "0.68.0"
-aube = { path = "locks/oxfmt/0.68.0", digest = "sha256:77b5f0babfeae0bf16bc5f66996d6554cbb5ab2b6c30ae27db057f3b5f111355" }
+version = "0.69.0"
+aube = { path = "locks/oxfmt/0.69.0", digest = "sha256:c3dd529b3f36d740430e9e6f12b2ab7535b667d051db0a0b89aee7bfb07c9423" }
 backend = "npm:oxfmt"
-specifiers = ["0.68.0"]
+specifiers = ["0.69.0"]
 
 [[tools.zizmor]]
 version = "1.30.1"
